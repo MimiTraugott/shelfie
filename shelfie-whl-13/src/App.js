@@ -18,14 +18,19 @@ class App extends Component {
     this.productName=this.productName.bind(this)
     this.handlePrice=this.handlePrice.bind(this)
     this.cancelUpdate=this.cancelUpdate.bind(this)
+    this.getInventory=this.getInventory.bind(this)
   }
+
   componentDidMount(){
-    axios.get('/api/inventory').then(res => {
+    this.getInventory()
+  }
+
+  getInventory(body){
+    axios.get('/api/inventory', body).then(res => {
       this.setState({
         inventory: res.data
       })
-    }
-    )
+    }).catch(err => console.log(err))
   }
 
   handleImage(val){
@@ -58,13 +63,13 @@ class App extends Component {
   return (
     <div className="App">
       <Dashboard inventory={this.state.inventory}/>
-      <Form/>
+      <Form getInventory={this.state.inventory}/>
       <Header/>
       <input onChange={(e)=> this.handleImage(e.target.value)} type="text"/>
       <input onChange={(e)=> this.productName(e.target.value)} type="text"/>
       <input onChange={(e)=> this.handlePrice(e.target.value)} type="text"/>
       <button onCLick={(e)=> this.cancelUpdate(e.target.value)}>Cancel</button>
-      <button>Add</button>
+      <button>Add To Inventory</button>
    
     </div>
   );

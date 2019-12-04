@@ -8,8 +8,7 @@ module.exports={
     addInventory: (req, res) => {
         const db = req.app.get('db')
         const {image_url, product_name, price} = req.body
-        db.create_product([image_url, product_name, price]).then
-        (product => {
+        db.create_product([image_url, product_name, price]).then(product => {
             res.status(200).send(product)
         })
     }
