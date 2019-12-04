@@ -11,6 +11,8 @@ app.use(express.json())
 //ENDPOINTS
 app.get('/api/inventory', ctrl.getInventory)
 app.post('/api/product', ctrl.addInventory)
+app.put('/api/product/:id', ctrl.updateInventory)
+app.delete('/api/product/:id', ctrl.deleteFromInventory)
 
 
 massive(CONNECTION_STRING)
