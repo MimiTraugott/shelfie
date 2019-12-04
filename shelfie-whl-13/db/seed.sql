@@ -14,3 +14,7 @@ VALUES ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtdgIuXf2vCHOv39Z
 INSERT INTO products (image_url, product_name, price)
 VALUES ('https://i.etsystatic.com/5648529/r/il/b6f6a4/885869183/il_570xN.885869183_ekt1.jpg', 'Betty Sweaty', 149.99)
 
+
+--CREATE_PRODUCT
+INSERT INTO products (image_url, product_name, price)
+VALUES (image_url, product_name, price)

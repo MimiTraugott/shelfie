@@ -8,6 +8,11 @@ const {SERVER_PORT, CONNECTION_STRING} = process.env
 
 app.use(express.json())
 
+//ENDPOINTS
+app.get('/api/inventory', ctrl.getInventory)
+app.post('/api/product', ctrl.addInventory)
+
+
 massive(CONNECTION_STRING)
 .then(db => {
     app.set('db', db)
