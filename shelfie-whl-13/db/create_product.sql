@@ -1,3 +1,4 @@
 INSERT INTO products (image_url, product_name, price)
-VALUES (image_url, product_name, price)
+VALUES ($1, $2, $3);
 
+SELECT * FROM products;

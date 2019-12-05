@@ -8,8 +8,8 @@ module.exports={
     addInventory: (req, res) => {
         const db = req.app.get('db')
         const {image_url, product_name, price} = req.body
-        db.create_product([image_url, product_name, price]).then(product => {
-            res.status(200).send(product)
+        db.create_product([image_url, product_name, price]).then(products => {
+            res.status(200).send(products)
         }).catch(err => console.log(err))
     },
     deleteFromInventory: (req, res) => {
@@ -24,9 +24,9 @@ module.exports={
     },
     updateInventory: (req,res)=> {
         const db = req.app.get('db')
-        const{params,query}=req
-
-        db.update_inventory([params.id, query.desc])
+        const{id}=req.params
+        const {image_url, product_name, price}=req.body
+        db.update_inventory([id, image_url, product_name, price])
         .then( () => res.sendStatus(200) )
         .catch( err => {
             res.status(500).send({errorMessage: 'well crap!'})

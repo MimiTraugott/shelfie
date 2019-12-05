@@ -14,11 +14,6 @@ class App extends Component {
       price: 0,
       inventory: []
     };
-    this.handleImage=this.handleImage.bind(this)
-    this.productName=this.productName.bind(this)
-    this.handlePrice=this.handlePrice.bind(this)
-    this.cancelUpdate=this.cancelUpdate.bind(this)
-    this.getInventory=this.getInventory.bind(this)
   }
 
   componentDidMount(){
@@ -52,6 +47,7 @@ class App extends Component {
   }
 
   cancelUpdate(e){
+    console.log('test click')
     this.setState({
       image_url: '',
       product_name: '',
@@ -60,15 +56,17 @@ class App extends Component {
   }
 
   render(){
+    console.log(this.state)
   return (
     <div className="App">
       <Dashboard inventory={this.state.inventory}/>
       <Form getInventory={this.state.inventory}/>
       <Header/>
-      <input onChange={(e)=> this.handleImage(e.target.value)} type="text"/>
-      <input onChange={(e)=> this.productName(e.target.value)} type="text"/>
-      <input onChange={(e)=> this.handlePrice(e.target.value)} type="text"/>
-      <button onCLick={(e)=> this.cancelUpdate(e.target.value)}>Cancel</button>
+      <input onChange={(e)=> this.handleImage(e.target.value)} value={this.state.image_url} type="text"/>
+      <input onChange={(e)=> this.productName(e.target.value)} value={this.state.product_name} type="text"/>
+      <input onChange={(e)=> this.handlePrice(e.target.value)} value={this.state.price} type="text"/>
+      <button onClick={()=> console.log('clicked')}>test</button>
+      <button onClick={()=> this.cancelUpdate()}>Cancel</button>
       <button>Add To Inventory</button>
    
     </div>
